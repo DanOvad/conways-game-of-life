@@ -1,4 +1,4 @@
-# README
+arr# README
 
 ## Objective
 
@@ -47,6 +47,38 @@ At the start, I knew I would have to split this into two or three functions.
 Very quickly I realized that producing an array for flips wasn't needed. Once you have an array showing the count of neighbors for each position, you can use it in conjunction with current board to determine dead cells that will be birthed and live cells that will survive. From there, determining and generating the next board became trivial.
 
 ### 1. Determining neighbor count
+My approach to checking neighbors started by shifting the array along axes and then comparing to the original cell. At first I considered all cases and was doing subtractions and additions. I came up the logic where it worked, but it was long and messy. As I was testing, I realized that I could simplify the logic by considering the arrays as booleans, and considering matrix boolean algebra instead of simply addition and subtraction.
+
+From this I produced the following code:
+
+<pre><code>
+def count_neighbors_simple(arr):
+''' This function takes in an array of ones and zeros,
+and returns an array of the same shape of integers counting the number of neighbors for each position.
+'''
+
+    # Determine the number of neighbors in horizontal and vertical directions
+        # Yes if my neighbor is greater than me, or equal to me when I'm alive.
+    left_neigh = np.roll(arr,1,axis=0) # 1 if my neighbor is alive.
+    right_neigh = np.roll(arr,-1,axis=0)
+    up_neigh = np.roll(arr,-1,axis=1)
+    down_neigh = np.roll(arr,1,axis=1)
+
+    # Determine the number of neighbors in diagonal directions
+    up_left_neigh = np.roll(np.roll(arr, 1, axis=1), 1, axis=0)
+    up_right_neigh = np.roll(np.roll(arr, -1, axis=1), 1, axis=0)
+    down_left_neigh = np.roll(np.roll(arr, 1, axis=1), -1, axis=0)
+    down_right_neigh = np.roll(np.roll(arr, -1, axis=1), -1, axis=0)
+
+    # Sum them up and return the array
+    sum_neigh = left_neigh + right_neigh + up_neigh + down_neigh + up_left_neigh + up_right_neigh + down_left_neigh + down_right_neigh
+    return sum_neigh
+    </code></pre>
+
+
+This can be further condensed with a loop over axes, but at this stage it simply represents how we are counting each neighbor.
+
+If we would like to change the definition of our world to being finite. We would implement a few changes at this stage. Specifically excluding edges from looping around axes
 
 ### 2. Logic for generating new board
 
