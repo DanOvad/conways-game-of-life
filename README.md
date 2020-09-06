@@ -12,6 +12,8 @@ The purpose of the Kaggle competition is the following:
 ---
 ## Conway's Game of Life
 In this repo, I am going to explore implementing [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) in python and generate GIFs of different starting points.
+Some other links:
+- https://towardsdatascience.com/algorithmic-beauty-an-introduction-to-cellular-automata-f53179b3cf8f
 
 ### Context
 
@@ -35,7 +37,6 @@ The initial pattern constitutes the seed of the system. The first generation is 
 
 ---
 ## Implementing
-
 Some other better implementations of [Conways Game of life in Python](http://jakevdp.github.io/blog/2013/08/07/conways-game-of-life/). This article contains the stepping function that is used for the Kaggle competition.
 
 ### First thoughts
@@ -108,7 +109,7 @@ Can be simplified to, all other cells do not impact the future board.
 
 Once I realized this, it was trivial to realize that all living cells on the new board come from survivors and new births. Therefore, the newboard can be generated using `count_arr` and our current board `arr`.
 
-<pre><code>def get_new_state(arr):
+<pre><code>def generate_next_board(arr):
     # These are the positions to bring to life
     birth = (count_arr == 3) * ~arr.astype(bool)
 
@@ -118,6 +119,11 @@ Once I realized this, it was trivial to realize that all living cells on the new
     # Combine them
     return (birth + live).astype(int)</code></pre>
 
+This can be further simplified using np.logical_and() and np.logical_or() and combined into the same statement:
+
+<pre><code>def generate_next_board(arr):
+    count_arr = count_neighbors(arr)
+    return np.logical_or((count_arr==3), np.logical_and(count_arr==2, arr)).astype(int)</code></pre>
 
 ##### Glider
 <img src="/gifs/glider20x20-50frames.gif" width="450" height="320"/>
