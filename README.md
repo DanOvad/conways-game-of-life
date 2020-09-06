@@ -36,6 +36,8 @@ The initial pattern constitutes the seed of the system. The first generation is 
 ---
 ## Implementing
 
+Some other better implementations of [Conways Game of life in Python](http://jakevdp.github.io/blog/2013/08/07/conways-game-of-life/). This article contains the stepping function that is used for the Kaggle competition.
+
 ### First thoughts
 At the start, I knew I would have to split this into two or three functions.
 - Count all the neighbors for each node
@@ -85,8 +87,19 @@ Once I realized this, it was trivial to realize that all living cells on the new
     return (birth + live).astype(int)</code></pre>
 
 
-### Checks
+![]('./gifs/random-game-1.gif')
 
-### Generating GIFs
+
+---
+## Generating Animations and GIFs
+This was the most frustrating part of this project. Was reliably generating animations in jupyter notebook, and reliably generating GIFs or MP4s to file.
+
+### Animations
+So many ways to do it: `FuncAnimation`, `ArtistAnimation`, using `plt.imshow()` or `plt.matshow()`, or imageio.
+
+### Saving to file (GIFs, MP4s, etc.)
+
+Trying to write to a GIF was very difficult and required exploring different types of writers. From MovieWriter, to PillowWriter, to imagemagick, and ffmpeg.
+
 
 ## Conclusion
