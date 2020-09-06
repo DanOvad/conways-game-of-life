@@ -87,7 +87,11 @@ Once I realized this, it was trivial to realize that all living cells on the new
     return (birth + live).astype(int)</code></pre>
 
 
-![]('./gifs/random-game-1.gif')
+##### Glider
+<img src="/gifs/glider20x20-50frames.gif" width="450" height="320"/>
+
+##### Random Starting position
+<img src="/gifs/random-game-1.gif" width="450" height="350"/>
 
 
 ---
