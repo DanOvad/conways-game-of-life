@@ -1,0 +1,16 @@
+
+
+
+# Py Cache directories
+__pycache__/
+*__pycache__
+
+# Checkpoints
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Scratch
+scratch/
+*scratch/
+scratch*
+
