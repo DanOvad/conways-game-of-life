@@ -1,8 +1,8 @@
-arr# README
+# README
 
 ## Objective
 
-The purpose of this project is to familiarize myself with Conway's Game of Life, working exclusively in numpy arrays, and generating animations through matplotlib.
+The purpose of this project is to familiarize myself with Conway's Game of Life, numpy arrays, and animations in matplotlib.
 
 This is also useful context for [Kaggle's Conway's Reverse Game of Life](https://www.kaggle.com/c/conways-reverse-game-of-life-2020/overview/description) competition.
 
