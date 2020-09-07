@@ -126,13 +126,20 @@ This can be further simplified using np.logical_and() and np.logical_or() and co
     return np.logical_or((count_arr==3), np.logical_and(count_arr==2, arr)).astype(int)</code></pre>
 
 ##### Glider
-<img src="/gifs/glider20x20-50frames.gif" width="450" height="320"/>
+<img src="/gifs/glider20x20-50frames.gif" />
 
-##### Random Starting position
-<img src="/gifs/random-game-1.gif" width="450" height="350"/>
+##### Gospel Gun
+<img src="/gifs/gospel_gun-250.gif" />
 
+##### Unbounded growth
+<img src="/gifs/unbounded-250.gif" />
+
+##### Random State
+<img src="/gifs/random-state-250.gif" />
 
 ---
+
+
 ## Generating Animations and GIFs
 This was the most frustrating part of this project. Was reliably generating animations in jupyter notebook, and reliably generating GIFs or MP4s to file.
 

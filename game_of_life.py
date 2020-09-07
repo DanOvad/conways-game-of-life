@@ -6,9 +6,9 @@ from matplotlib.animation import FuncAnimation
 from matplotlib import animation
 
 
-arr = np.random.randint(low=0, high=2, size=(20,20))
+arr = np.random.randint(low=0, high=2, size=(50,50))
 
-def count_neighbors_simple(arr):
+def count_neighbors(arr):
     ''' This function takes in an array of ones and zeros,
     and returns an array of the same shape with how many
     cardinal neighbors each position has.
@@ -31,7 +31,7 @@ def count_neighbors_simple(arr):
 
 
 def generate_next_board(arr):
-    count_arr = count_neighbors(arrrr)
+    count_arr = count_neighbors(arr)
     return np.logical_or((count_arr==3), np.logical_and(count_arr==2, arr)).astype(int)
 
 
@@ -43,11 +43,9 @@ def generate_series(arr, n_frames):
 
     # Iterate over the number of frames
     for frame in range(n_frames):
-        frame_list.append(get_new_state(frame_list[frame]))
+        frame_list.append(generate_next_board(frame_list[frame]))
 
     return frame_list
-
-frames = generate_series(arr, 100)
 
 def generate_gif(frame_list, filepath):
     mpl.rc('animation', html='jshtml')
@@ -60,5 +58,5 @@ def generate_gif(frame_list, filepath):
     anim.save(filepath, writer='imagemagick')
     return anim
 
-
-anim = generate_gif(frames, 'gifs/test3.gif')
+frames = generate_series(arr, 250)
+anim = generate_gif(frames, 'gifs/random-state-250.gif')
